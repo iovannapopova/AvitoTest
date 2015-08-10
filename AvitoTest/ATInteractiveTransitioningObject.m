@@ -26,12 +26,4 @@
     return UIViewAnimationCurveEaseIn;
 }
 
-- (NSTimeInterval)transitionDuration:(id)context {
-    return 0.35;
-}
-
-- (void)animateTransition:(id<UIViewControllerContextTransitioning>)context {
-    
-}
-
 @end

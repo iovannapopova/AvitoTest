@@ -15,7 +15,7 @@
 #import "ATTableViewDataSource.h"
 #import "ATSearchResultViewModel.h"
 #import "ATImageViewController.h"
-#import "ATInteractiveTransitioningObject.h"
+#import "ATTransitioningDelegateObject.h"
 
 @interface ATViewController ()<UISearchBarDelegate,UISearchBarDelegate,ATTableViewDelegate>
 
@@ -31,8 +31,6 @@
 
 @property (nonatomic, strong) NSArray* itunesResultsArray;
 @property (nonatomic, strong) NSArray* githubResultsArray;
-
-@property (nonatomic, strong) ATInteractiveTransitioningObject* interactiveTransitioning;
 
 @end
 
@@ -139,13 +137,6 @@
     return _searchEngine;
 }
 
-- (ATInteractiveTransitioningObject*)interactiveTransitioning{
-    if (_interactiveTransitioning == nil) {
-        _interactiveTransitioning = [[ATInteractiveTransitioningObject alloc] init];
-    }
-    return _interactiveTransitioning;
-}
-
 #pragma mark - Life cycle
 
 - (void)viewDidLoad {
@@ -192,16 +183,11 @@ static CGFloat kSearchBarHeight = 60.0;
 #pragma mark - Cell Delegate
 
 -(void)userDidTouch:(UITapGestureRecognizer*)recognizer imageURL:(NSURL*)imageURL cell:(ATTableViewCell*)cell{
+    ATTransitioningDelegateObject* transitoningDelegate = [[ATTransitioningDelegateObject alloc] init];
     ATImageViewController *imageViewController = [[ATImageViewController alloc] init];
-    imageViewController.view.frame = cell.imageView.frame;
+    imageViewController.transitioningDelegate = transitoningDelegate;
     imageViewController.modalPresentationStyle = UIModalPresentationCustom;
-    imageViewController.imageView = cell.imageView;
-    
-
-    [self presentViewController:imageViewController animated:YES completion:^{
-        //
-    }];
-    
+    [self presentViewController:imageViewController animated:YES completion:nil];
 }
 
 #pragma mark - Delegate

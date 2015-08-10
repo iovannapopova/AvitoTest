@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DF60F6A8-59D3-4135-A5CB-596DC72D1342</string>
+	<key>IDESourceControlProjectName</key>
+	<string>AvitoTest</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C609E74C981AF604CEEA3078D1738B35E0FA00AE</key>
+		<string>https://github.com/iovannapopova/AvitoTest.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>AvitoTest.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C609E74C981AF604CEEA3078D1738B35E0FA00AE</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/iovannapopova/AvitoTest.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C609E74C981AF604CEEA3078D1738B35E0FA00AE</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C609E74C981AF604CEEA3078D1738B35E0FA00AE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>AvitoTest</string>
+		</dict>
+	</array>
+</dict>
+</plist>
