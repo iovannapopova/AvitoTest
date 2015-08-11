@@ -8,7 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "ATTransitioningDelegateObject.h"
 
 @interface ATAnimatedTransitioningObject : NSObject <UIViewControllerAnimatedTransitioning>
+
+@property (nonatomic, assign) ATAnimationType type;
 
 @end

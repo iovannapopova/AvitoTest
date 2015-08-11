@@ -10,6 +10,8 @@
 
 @interface ATImageViewController : UIViewController
 
-@property (nonatomic, strong) UIImageView* imageView;
+- (instancetype)initWithImageView:(UIImageView*)imageView;
+
+@property (nonatomic, readonly) UIImageView* imageView;
 
 @end

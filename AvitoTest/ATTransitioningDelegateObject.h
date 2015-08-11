@@ -9,6 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, ATAnimationType){
+    ATAnimationTypePresent,
+    ATAnimationTypeDismiss
+};
+
 @interface ATTransitioningDelegateObject : NSObject <UIViewControllerTransitioningDelegate>
+
+@property (nonatomic, assign) ATAnimationType type;
 
 @end

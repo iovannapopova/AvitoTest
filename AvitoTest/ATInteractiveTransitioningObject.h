@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "ATTransitioningDelegateObject.h"
 
 @interface ATInteractiveTransitioningObject : NSObject <UIViewControllerInteractiveTransitioning>
 
 @property (nonatomic, readonly) CGFloat duration;
 @property (readonly) CGFloat percentComplete;
+@property (nonatomic, assign) ATAnimationType type;
 
 @end

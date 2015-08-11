@@ -37,18 +37,22 @@
 }
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
+    self.animated.type = ATAnimationTypePresent;
     return self.animated;
 }
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
+    self.animated.type = ATAnimationTypeDismiss;
     return self.animated;
 }
 
 - (id <UIViewControllerInteractiveTransitioning>)interactionControllerForPresentation:(id <UIViewControllerAnimatedTransitioning>)animator{
+    self.interactive.type = ATAnimationTypePresent;
     return self.interactive;
 }
 
 - (id <UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id <UIViewControllerAnimatedTransitioning>)animator{
+    self.interactive.type = ATAnimationTypeDismiss;
     return self.interactive;
 }
 

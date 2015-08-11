@@ -184,9 +184,14 @@ static CGFloat kSearchBarHeight = 60.0;
 
 -(void)userDidTouch:(UITapGestureRecognizer*)recognizer imageURL:(NSURL*)imageURL cell:(ATTableViewCell*)cell{
     ATTransitioningDelegateObject* transitoningDelegate = [[ATTransitioningDelegateObject alloc] init];
-    ATImageViewController *imageViewController = [[ATImageViewController alloc] init];
+    transitoningDelegate.type = ATAnimationTypePresent;
+    
+    ATImageViewController *imageViewController = [[ATImageViewController alloc] initWithImageView:cell.objectImageView];
+    imageViewController.view.bounds = [self.view convertRect:cell.objectImageView.frame fromView:cell.contentView];
+    
     imageViewController.transitioningDelegate = transitoningDelegate;
     imageViewController.modalPresentationStyle = UIModalPresentationCustom;
+    
     [self presentViewController:imageViewController animated:YES completion:nil];
 }
 
