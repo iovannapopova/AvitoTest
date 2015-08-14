@@ -18,4 +18,6 @@ typedef NS_ENUM(NSInteger, ATAnimationType){
 
 @property (nonatomic, assign) ATAnimationType type;
 
+- (void)handlePan:(UIPanGestureRecognizer*)gesture;
+
 @end

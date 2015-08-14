@@ -51,12 +51,14 @@
 //    self.interactive.type = ATAnimationTypePresent;
 //    return self.interactive;
 //}
-//
+
 - (id <UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id <UIViewControllerAnimatedTransitioning>)animator{
     self.interactive.type = ATAnimationTypeDismiss;
     return self.interactive;
 }
 
-
+- (void)handlePan:(UIPanGestureRecognizer *)gesture{
+    [self.interactive handlePan:gesture];
+}
 
 @end

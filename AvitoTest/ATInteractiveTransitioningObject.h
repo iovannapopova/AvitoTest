@@ -16,4 +16,6 @@
 @property (readonly) CGFloat percentComplete;
 @property (nonatomic, assign) ATAnimationType type;
 
+- (void)handlePan:(UIPanGestureRecognizer*)gesture;
+
 @end

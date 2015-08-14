@@ -188,6 +188,7 @@ static CGFloat kSearchBarHeight = 60.0;
     
     ATImageViewController *imageViewController = [[ATImageViewController alloc] initWithImage:image];
     imageViewController.view.frame = [self.view convertRect:cell.objectImageView.frame fromView:cell.contentView];
+    imageViewController.fromCenter = imageViewController.view.center;
     
     imageViewController.transitioningDelegate = self.transitoningDelegate;
     imageViewController.modalPresentationStyle = UIModalPresentationCustom;
