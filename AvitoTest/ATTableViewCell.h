@@ -13,7 +13,7 @@
 
 @protocol CellDelegate <NSObject>
 
--(void)userDidTouch:(UITapGestureRecognizer*)recognizer imageURL:(NSURL*)imageURL cell:(ATTableViewCell*)cell;
+-(void)userDidTouch:(UITapGestureRecognizer*)recognizer image:(UIImage*)image cell:(ATTableViewCell*)cell;
 
 @end
 

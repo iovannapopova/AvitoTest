@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ATImageViewController : UIViewController
+@interface ATImageViewController : UIViewController 
 
-- (instancetype)initWithImageView:(UIImageView*)imageView;
+- (instancetype)initWithImage:(UIImage*)image;
 
 @property (nonatomic, readonly) UIImageView* imageView;
 

@@ -8,15 +8,23 @@
 
 #import "ATImageViewController.h"
 
+@interface ATImageViewController ()
+
+@property (nonatomic, strong) UIImage* image;
+
+@end
+
 
 @implementation ATImageViewController
 
-
-- (instancetype)initWithImageView:(UIImageView*)imageView{
+- (instancetype)initWithImage:(UIImage*)image{
     self = [super init];
     if (self) {
-        _imageView = imageView;
+        _image = image;
+        _imageView = [[UIImageView alloc] initWithImage:_image];
         _imageView.userInteractionEnabled = YES;
+        UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+        [_imageView addGestureRecognizer:panGesture];
     }
     return self;
 }
@@ -28,8 +36,12 @@
 
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
+    self.imageView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.width);
     self.imageView.center = CGPointMake(CGRectGetMidX(self.view.bounds),CGRectGetMidY(self.view.bounds));
 }
 
+- (void)handlePan:(UIPanGestureRecognizer*)gesture{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end

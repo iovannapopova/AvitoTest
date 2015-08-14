@@ -12,42 +12,43 @@
 
 @interface ATAnimatedTransitioningObject ()
 
-@property (nonatomic, strong) UITapGestureRecognizer* gesture;
+@property (nonatomic,assign) CGPoint center;
 
 @end
-@implementation ATAnimatedTransitioningObject
 
-- (instancetype)init{
-    self = [super init];
-    if (self) {
-    }
-    return self;
-}
+@implementation ATAnimatedTransitioningObject
 
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext{
     
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-    UIView *contextView = [transitionContext containerView];
-    [contextView addSubview:toVC.view];
     
     switch (self.type) {
         case ATAnimationTypePresent:{
+            UIView *contextView = [transitionContext containerView];
+            [contextView addSubview:toVC.view];
             
             [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
+                self.center = toVC.view.center;
                 toVC.view.center = fromVC.view.center;
                 CGFloat alpha = fromVC.view.frame.size.width / toVC.view.frame.size.width;
                 CGAffineTransform transform = CGAffineTransformMakeScale(alpha, alpha);
                 toVC.view.transform = transform;
             }completion:^(BOOL finished) {
-                [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+                [transitionContext completeTransition:YES];
             }];
         }
             
             break;
             
         case ATAnimationTypeDismiss:{
-
+            [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
+                fromVC.view.transform = CGAffineTransformIdentity;
+                fromVC.view.center = self.center;
+            }completion:^(BOOL finished) {
+                [fromVC.view removeFromSuperview];
+                [transitionContext completeTransition:YES];
+            }];
         }
             break;
             

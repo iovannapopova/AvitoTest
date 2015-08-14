@@ -9,6 +9,7 @@
 #import "ATTransitioningDelegateObject.h"
 #import "ATAnimatedTransitioningObject.h"
 #import "ATInteractiveTransitioningObject.h"
+#import "ATImageViewController.h"
 
 @interface ATTransitioningDelegateObject ()
 
@@ -46,14 +47,16 @@
     return self.animated;
 }
 
-- (id <UIViewControllerInteractiveTransitioning>)interactionControllerForPresentation:(id <UIViewControllerAnimatedTransitioning>)animator{
-    self.interactive.type = ATAnimationTypePresent;
-    return self.interactive;
-}
-
+//- (id <UIViewControllerInteractiveTransitioning>)interactionControllerForPresentation:(id <UIViewControllerAnimatedTransitioning>)animator{
+//    self.interactive.type = ATAnimationTypePresent;
+//    return self.interactive;
+//}
+//
 - (id <UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id <UIViewControllerAnimatedTransitioning>)animator{
     self.interactive.type = ATAnimationTypeDismiss;
     return self.interactive;
 }
+
+
 
 @end

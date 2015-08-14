@@ -32,6 +32,9 @@
 @property (nonatomic, strong) NSArray* itunesResultsArray;
 @property (nonatomic, strong) NSArray* githubResultsArray;
 
+
+@property (nonatomic, strong) ATTransitioningDelegateObject* transitoningDelegate;
+
 @end
 
 @implementation ATViewController
@@ -77,10 +80,6 @@
         _resultsTableViewDataSource = [[ATTableViewDataSource alloc] init];
         _resultsTableViewDataSource.uiDelegate = self;
     }
-    NSArray* array;
-    [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        //
-    }];
     return _resultsTableViewDataSource;
 }
 
@@ -182,16 +181,17 @@ static CGFloat kSearchBarHeight = 60.0;
 
 #pragma mark - Cell Delegate
 
--(void)userDidTouch:(UITapGestureRecognizer*)recognizer imageURL:(NSURL*)imageURL cell:(ATTableViewCell*)cell{
-    ATTransitioningDelegateObject* transitoningDelegate = [[ATTransitioningDelegateObject alloc] init];
-    transitoningDelegate.type = ATAnimationTypePresent;
+
+-(void)userDidTouch:(UITapGestureRecognizer*)recognizer image:(UIImage*)image cell:(ATTableViewCell*)cell{
+    self.transitoningDelegate = [[ATTransitioningDelegateObject alloc] init];
+    self.transitoningDelegate.type = ATAnimationTypePresent;
     
-    ATImageViewController *imageViewController = [[ATImageViewController alloc] initWithImageView:cell.objectImageView];
-    imageViewController.view.bounds = [self.view convertRect:cell.objectImageView.frame fromView:cell.contentView];
+    ATImageViewController *imageViewController = [[ATImageViewController alloc] initWithImage:image];
+    imageViewController.view.frame = [self.view convertRect:cell.objectImageView.frame fromView:cell.contentView];
     
-    imageViewController.transitioningDelegate = transitoningDelegate;
+    imageViewController.transitioningDelegate = self.transitoningDelegate;
     imageViewController.modalPresentationStyle = UIModalPresentationCustom;
-    
+
     [self presentViewController:imageViewController animated:YES completion:nil];
 }
 
@@ -210,9 +210,5 @@ static CGFloat kSearchBarHeight = 60.0;
     }
     [self.tableView reloadData];
 }
-
-#pragma mark - 
-
-
 
 @end
