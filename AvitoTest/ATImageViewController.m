@@ -26,8 +26,6 @@
         _imageView.userInteractionEnabled = YES;
         UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
         [_imageView addGestureRecognizer:panGesture];
-        UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
-        [_imageView addGestureRecognizer:tapGesture];
     }
     return self;
 }
@@ -45,11 +43,12 @@
 
 - (void)handlePan:(UIPanGestureRecognizer*)gesture{
     [(ATTransitioningDelegateObject*)self.transitioningDelegate handlePan:(UIPanGestureRecognizer*)gesture];
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)handleTap:(UITapGestureRecognizer*)gesture{
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [(ATTransitioningDelegateObject*)self.transitioningDelegate setInteractive:YES];
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        [self dismissViewControllerAnimated:YES completion:^{
+            [self setTransitioningDelegate:nil];
+        }];
+    }
 }
 
 @end

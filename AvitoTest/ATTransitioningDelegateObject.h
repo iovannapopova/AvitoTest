@@ -17,6 +17,7 @@ typedef NS_ENUM(NSInteger, ATAnimationType){
 @interface ATTransitioningDelegateObject : NSObject <UIViewControllerTransitioningDelegate>
 
 @property (nonatomic, assign) ATAnimationType type;
+@property (nonatomic, assign) BOOL interactive;
 
 - (void)handlePan:(UIPanGestureRecognizer*)gesture;
 

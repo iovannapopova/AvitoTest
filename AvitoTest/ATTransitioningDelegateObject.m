@@ -13,8 +13,8 @@
 
 @interface ATTransitioningDelegateObject ()
 
-@property (nonatomic, strong) ATInteractiveTransitioningObject *interactive;
-@property (nonatomic, strong) ATAnimatedTransitioningObject *animated;
+@property (nonatomic, strong) ATInteractiveTransitioningObject *interactiveAnimation;
+@property (nonatomic, strong) ATAnimatedTransitioningObject *animatedAnimation;
 
 
 @end
@@ -23,42 +23,48 @@
 
 #pragma mark - Lazy loading
 
-- (ATAnimatedTransitioningObject*)animated{
-    if (_animated == nil) {
-        _animated = [[ATAnimatedTransitioningObject alloc] init];
+- (ATAnimatedTransitioningObject*)animatedAnimation{
+    if (_animatedAnimation == nil) {
+        _animatedAnimation = [[ATAnimatedTransitioningObject alloc] init];
     }
-    return _animated;
+    return _animatedAnimation;
 }
 
-- (ATInteractiveTransitioningObject*)interactive{
-    if (_interactive == nil) {
-        _interactive = [[ATInteractiveTransitioningObject alloc] init];
+- (ATInteractiveTransitioningObject*)interactiveAnimation{
+    if (_interactiveAnimation == nil) {
+        _interactiveAnimation = [[ATInteractiveTransitioningObject alloc] init];
     }
-    return _interactive;
+    return _interactiveAnimation;
 }
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
-    self.animated.type = ATAnimationTypePresent;
-    return self.animated;
+    self.animatedAnimation.type = ATAnimationTypePresent;
+    return self.animatedAnimation;
 }
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
-    self.animated.type = ATAnimationTypeDismiss;
-    return self.animated;
+    self.animatedAnimation.type = ATAnimationTypeDismiss;
+    return self.animatedAnimation;
 }
 
-//- (id <UIViewControllerInteractiveTransitioning>)interactionControllerForPresentation:(id <UIViewControllerAnimatedTransitioning>)animator{
-//    self.interactive.type = ATAnimationTypePresent;
-//    return self.interactive;
-//}
+- (id <UIViewControllerInteractiveTransitioning>)interactionControllerForPresentation:(id <UIViewControllerAnimatedTransitioning>)animator{
+    if (!self.interactive) {
+        return nil;
+    }
+    self.interactiveAnimation.type = ATAnimationTypePresent;
+    return self.interactiveAnimation;
+}
 
 - (id <UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id <UIViewControllerAnimatedTransitioning>)animator{
-    self.interactive.type = ATAnimationTypeDismiss;
-    return self.interactive;
+    if (!self.interactive) {
+        return nil;
+    }
+    self.interactiveAnimation.type = ATAnimationTypeDismiss;
+    return self.interactiveAnimation;
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)gesture{
-    [self.interactive handlePan:gesture];
+    [self.interactiveAnimation handlePan:gesture];
 }
 
 @end
