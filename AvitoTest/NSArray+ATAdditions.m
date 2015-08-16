@@ -14,7 +14,9 @@
     NSMutableArray* result = [[NSMutableArray alloc] init];
     [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         id mappedObj = transform (obj, idx);
-        [result addObject:mappedObj];
+        if (mappedObj != nil) {
+            [result addObject:mappedObj];
+        }
     }];
     return [result copy];
 }

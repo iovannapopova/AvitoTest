@@ -12,7 +12,6 @@
 
 @property (nonatomic,strong) UILabel* name;
 @property (nonatomic,strong) UILabel* author;
-@property (nonatomic,strong) UIImage* image;
 
 @end
 
@@ -88,15 +87,19 @@
 -(void)updateSubViews{
     self.name.text = self.searchResultViewModel.name;
     self.author.text = self.searchResultViewModel.author;
-    self.objectImageView.image = [UIImage imageNamed:@""];
+    self.objectImageView.image = nil;
+    
+    NSURL* imageURL = self.searchResultViewModel.previewImageUrl;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSData *imgData = [NSData dataWithContentsOfURL:self.searchResultViewModel.previewImageUrl];
+        NSData *imgData = [NSData dataWithContentsOfURL:imageURL];
         if (imgData) {
-            self.image = [UIImage imageWithData:imgData];
-            if (self.image) {
+            UIImage* image = [UIImage imageWithData:imgData];
+            if (image) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    self.objectImageView.image = self.image;
+                    if ([self.searchResultViewModel.previewImageUrl isEqual:imageURL]) {
+                        self.objectImageView.image = image;
+                    }
                 });
             }
         }
@@ -104,7 +107,7 @@
 }
 
 -(void)tapToImage:(UITapGestureRecognizer*)tap{
-    [self.delegate userDidTouch:tap image:self.image cell:self];
+    [self.delegate userDidTouch:tap image:self.objectImageView.image cell:self];
 }
 
 @end

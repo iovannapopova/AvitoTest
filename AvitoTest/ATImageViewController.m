@@ -27,6 +27,9 @@
         
         UIPinchGestureRecognizer* pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
         [_imageView addGestureRecognizer:pinchGesture];
+        
+        UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+        [_imageView addGestureRecognizer:tapGesture];
     }
     return self;
 }
@@ -50,5 +53,11 @@
     }
 }
 
+
+- (void)handleTap:(UITapGestureRecognizer*)gesture{
+    [(ATTransitioningDelegateObject*)self.transitioningDelegate setInteractive:NO];
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+}
 
 @end
