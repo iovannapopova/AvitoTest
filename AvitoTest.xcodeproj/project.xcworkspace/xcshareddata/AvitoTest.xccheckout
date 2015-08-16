@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>DF60F6A8-59D3-4135-A5CB-596DC72D1342</string>
 	<key>IDESourceControlProjectName</key>
-	<string>AvitoTest</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>C609E74C981AF604CEEA3078D1738B35E0FA00AE</key>
 		<string>https://github.com/iovannapopova/AvitoTest.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>AvitoTest.xcodeproj</string>
+	<string>AvitoTest.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>C609E74C981AF604CEEA3078D1738B35E0FA00AE</key>

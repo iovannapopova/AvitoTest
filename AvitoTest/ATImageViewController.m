@@ -24,8 +24,9 @@
         _image = image;
         _imageView = [[UIImageView alloc] initWithImage:_image];
         _imageView.userInteractionEnabled = YES;
-        UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-        [_imageView addGestureRecognizer:panGesture];
+        
+        UIPinchGestureRecognizer* pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
+        [_imageView addGestureRecognizer:pinchGesture];
     }
     return self;
 }
@@ -41,14 +42,13 @@
     self.imageView.center = CGPointMake(CGRectGetMidX(self.view.bounds),CGRectGetMidY(self.view.bounds));
 }
 
-- (void)handlePan:(UIPanGestureRecognizer*)gesture{
-    [(ATTransitioningDelegateObject*)self.transitioningDelegate handlePan:(UIPanGestureRecognizer*)gesture];
+- (void)handlePinch:(UIPinchGestureRecognizer*)gesture{
     [(ATTransitioningDelegateObject*)self.transitioningDelegate setInteractive:YES];
+    [(ATTransitioningDelegateObject*)self.transitioningDelegate handlePinch:gesture];
     if (gesture.state == UIGestureRecognizerStateBegan) {
-        [self dismissViewControllerAnimated:YES completion:^{
-            [self setTransitioningDelegate:nil];
-        }];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
+
 
 @end

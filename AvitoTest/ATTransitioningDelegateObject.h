@@ -18,7 +18,8 @@ typedef NS_ENUM(NSInteger, ATAnimationType){
 
 @property (nonatomic, assign) ATAnimationType type;
 @property (nonatomic, assign) BOOL interactive;
+@property (nonatomic, assign) CGPoint startCenter;
 
-- (void)handlePan:(UIPanGestureRecognizer*)gesture;
+- (void)handlePinch:(UIPinchGestureRecognizer*)gesture;
 
 @end

@@ -63,8 +63,8 @@
     return self.interactiveAnimation;
 }
 
-- (void)handlePan:(UIPanGestureRecognizer *)gesture{
-    [self.interactiveAnimation handlePan:gesture];
+- (void)handlePinch:(UIPinchGestureRecognizer*)gesture{
+    [self.interactiveAnimation handlePinch:gesture];
 }
 
 @end

@@ -13,6 +13,5 @@
 - (instancetype)initWithImage:(UIImage*)image;
 
 @property (nonatomic, readonly) UIImageView* imageView;
-@property (nonatomic, assign) CGPoint fromCenter;
 
 @end

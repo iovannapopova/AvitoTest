@@ -33,7 +33,7 @@
 @property (nonatomic, strong) NSArray* githubResultsArray;
 
 
-@property (nonatomic, strong) ATTransitioningDelegateObject* transitoningDelegate;
+@property (nonatomic, strong) ATTransitioningDelegateObject* customTransitioningDelegate;
 
 @end
 
@@ -183,14 +183,15 @@ static CGFloat kSearchBarHeight = 60.0;
 
 
 -(void)userDidTouch:(UITapGestureRecognizer*)recognizer image:(UIImage*)image cell:(ATTableViewCell*)cell{
-    self.transitoningDelegate = [[ATTransitioningDelegateObject alloc] init];
-    self.transitoningDelegate.type = ATAnimationTypePresent;
-    
+    self.customTransitioningDelegate = [[ATTransitioningDelegateObject alloc] init];
+    self.customTransitioningDelegate.type = ATAnimationTypePresent;
+
     ATImageViewController *imageViewController = [[ATImageViewController alloc] initWithImage:image];
     imageViewController.view.frame = [self.view convertRect:cell.objectImageView.frame fromView:cell.contentView];
-    imageViewController.fromCenter = imageViewController.view.center;
     
-    imageViewController.transitioningDelegate = self.transitoningDelegate;
+    self.customTransitioningDelegate.startCenter = imageViewController.view.center;
+    
+    imageViewController.transitioningDelegate = self.customTransitioningDelegate;
     imageViewController.modalPresentationStyle = UIModalPresentationCustom;
 
     [self presentViewController:imageViewController animated:YES completion:nil];
