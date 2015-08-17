@@ -17,21 +17,24 @@
         _name = [searchResult.name copy];
         _author = [searchResult.author copy];
         _previewImageUrl = searchResult.previewImageUrl;
-        
-        switch (searchResult.searchEngineID) {
-            case ATSearchEngineIDiTunes:
-                _cellType = index % 2 ? ATCellTypeLeft : ATCellTypeRight;
-                break;
-                
-            case ATSearchEngineIDGitHub:
-                _cellType = index % 2 ? ATCellTypeRight : ATCellTypeLeft;
-                break;
-                
-            default:
-                break;
-        }
+        _cellType = [self cellTypeWithIndex:index searchIngine:searchResult.searchEngineID];
     }
     return self;
+}
+
+- (ATCellType)cellTypeWithIndex:(NSInteger)index searchIngine:(ATSearchEngineID)engineID{
+    switch (engineID) {
+        case ATSearchEngineIDiTunes:
+            return index % 2 ? ATCellTypeLeft : ATCellTypeRight;
+            break;
+            
+        case ATSearchEngineIDGitHub:
+            return index % 2 ? ATCellTypeRight : ATCellTypeLeft;
+            break;
+            
+        default:
+            break;
+    }
 }
 
 @end

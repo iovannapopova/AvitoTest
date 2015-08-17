@@ -60,23 +60,4 @@
     [self.searchQueue addOperation:completionOperation];
 }
 
--(NSArray*)alternatingResultsFromOperationsResults:(NSArray*)operationsResults {
-    NSUInteger maxCount = 0;
-    for (NSArray* operationResult in operationsResults) {
-        if (maxCount < [operationResult count]) {
-            maxCount = [operationResult count];
-        }
-    }
-    
-    NSMutableArray* results = [NSMutableArray array];
-    for (NSUInteger index = 0; index < maxCount; index++) {
-        for (NSArray* operationResult in operationsResults) {
-            if ((index <= [operationResult count] - 1) && [operationResult count] > 0) {
-                [results addObject:operationResult[index]];
-            }
-        }
-    }
-    return [results copy];
-}
-
 @end

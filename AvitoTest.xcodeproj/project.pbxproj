@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1C27CE691B811A95001FEB71 /* ATAdditionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C27CE681B811A95001FEB71 /* ATAdditionsTests.m */; };
 		1C27CE6D1B8134E0001FEB71 /* ATRemoteSearchEngineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C27CE6C1B8134E0001FEB71 /* ATRemoteSearchEngineTests.m */; };
+		1C27CE6F1B81A441001FEB71 /* ATSearchResultViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C27CE6E1B81A441001FEB71 /* ATSearchResultViewModelTests.m */; };
 		1C788B891B758C0300EF098C /* ATAnimatedTransitioningObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C788B881B758C0300EF098C /* ATAnimatedTransitioningObject.m */; };
 		1C788B8C1B758CF300EF098C /* ATTransitioningDelegateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C788B8B1B758CF300EF098C /* ATTransitioningDelegateObject.m */; };
 		722524AB1B70F7C400555A46 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 722524AA1B70F7C400555A46 /* main.m */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		1C27CE681B811A95001FEB71 /* ATAdditionsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATAdditionsTests.m; sourceTree = "<group>"; };
 		1C27CE6C1B8134E0001FEB71 /* ATRemoteSearchEngineTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATRemoteSearchEngineTests.m; sourceTree = "<group>"; };
+		1C27CE6E1B81A441001FEB71 /* ATSearchResultViewModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATSearchResultViewModelTests.m; sourceTree = "<group>"; };
 		1C788B871B758C0300EF098C /* ATAnimatedTransitioningObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATAnimatedTransitioningObject.h; sourceTree = "<group>"; };
 		1C788B881B758C0300EF098C /* ATAnimatedTransitioningObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATAnimatedTransitioningObject.m; sourceTree = "<group>"; };
 		1C788B8A1B758CF300EF098C /* ATTransitioningDelegateObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATTransitioningDelegateObject.h; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				1C27CE6C1B8134E0001FEB71 /* ATRemoteSearchEngineTests.m */,
+				1C27CE6E1B81A441001FEB71 /* ATSearchResultViewModelTests.m */,
 				722524C41B70F7C400555A46 /* AvitoTestTests.m */,
 				1C27CE681B811A95001FEB71 /* ATAdditionsTests.m */,
 				722524C21B70F7C400555A46 /* Supporting Files */,
@@ -312,6 +315,7 @@
 			files = (
 				1C27CE691B811A95001FEB71 /* ATAdditionsTests.m in Sources */,
 				1C27CE6D1B8134E0001FEB71 /* ATRemoteSearchEngineTests.m in Sources */,
+				1C27CE6F1B81A441001FEB71 /* ATSearchResultViewModelTests.m in Sources */,
 				722524C51B70F7C400555A46 /* AvitoTestTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

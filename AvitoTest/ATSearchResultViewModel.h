@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ATSearchResult.h"
 
 typedef NS_ENUM(NSInteger, ATCellType) {
     ATCellTypeLeft,
@@ -23,5 +24,7 @@ typedef NS_ENUM(NSInteger, ATCellType) {
 @property (nonatomic, copy, readonly) NSString* author;
 @property (nonatomic, strong, readonly) NSURL* previewImageUrl;
 @property (nonatomic, readonly) ATCellType cellType;
+
+- (ATCellType)cellTypeWithIndex:(NSInteger)index searchIngine:(ATSearchEngineID)engineID;
 
 @end
