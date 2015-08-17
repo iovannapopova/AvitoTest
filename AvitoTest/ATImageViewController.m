@@ -53,7 +53,6 @@
     }
 }
 
-
 - (void)handleTap:(UITapGestureRecognizer*)gesture{
     [(ATTransitioningDelegateObject*)self.transitioningDelegate setInteractive:NO];
     [self dismissViewControllerAnimated:YES completion:nil];

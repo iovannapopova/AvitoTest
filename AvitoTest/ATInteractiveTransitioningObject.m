@@ -61,14 +61,15 @@
             self.alpha = MIN(self.alpha, 1);
             
             CGAffineTransform transform = self.fromVC.view.transform;
-            transform.a = self.startTransform.a + self.alpha * (CGAffineTransformIdentity.a - self.startTransform.a);
-            transform.d = self.startTransform.d + self.alpha * (CGAffineTransformIdentity.d - self.startTransform.d);
+            transform.a = [self interpolationStart:self.startTransform.a end:CGAffineTransformIdentity.a alpha:self.alpha];
+            transform.d = [self interpolationStart:self.startTransform.d end:CGAffineTransformIdentity.d alpha:self.alpha];
             
             self.fromVC.view.transform = transform;
             
             CGPoint center = self.fromVC.view.center;
-            center.x = self.startCenter.x + self.alpha * (self.endCenter.x - self.startCenter.x);
-            center.y = self.startCenter.y + self.alpha * (self.endCenter.y - self.startCenter.y);
+            
+            center.x = [self interpolationStart:self.startCenter.x end:self.endCenter.x alpha:self.alpha];
+            center.y = [self interpolationStart:self.startCenter.y end:self.endCenter.y alpha:self.alpha];
             
             self.fromVC.view.center = center;
             
@@ -105,6 +106,11 @@
             [self.transitionContext completeTransition:NO];
         }];
     }
+}
+
+
+- (CGFloat)interpolationStart:(CGFloat)startValue end:(CGFloat)endValue alpha:(CGFloat)alpha{
+    return startValue + alpha * (endValue - startValue);
 }
 
 

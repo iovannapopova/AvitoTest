@@ -13,8 +13,6 @@
 
 @protocol ATTableViewDelegate <NSObject>
 
--(void)setUserInteractionEnabled:(BOOL)enable;
-
 @end
 
 @interface ATTableViewDataSource : NSObject <UITableViewDelegate, UITableViewDataSource>

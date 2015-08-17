@@ -15,6 +15,8 @@ typedef NSArray*(^ATRemoteSearchEngineResultParser)(NSDictionary* resultDictiona
 
 -(instancetype)initWithTemplateURL:(NSURL*)templateURL searchTermParameterName:(NSString*)searchTermParameterName resultParser:(ATRemoteSearchEngineResultParser)resultParser;
 
+- (NSURL*)urlForSearchTerm:(NSString*)term;
+
 @end
 
 

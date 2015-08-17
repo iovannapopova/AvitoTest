@@ -7,6 +7,7 @@
 //
 
 #import "ATRemoteSearchEngine.h"
+#import "NSArray+ATAdditions.h"
 
 @interface ATRemoteSearchEngine()
 
@@ -34,13 +35,10 @@
 }
 
 -(void)searchForString:(NSString *)string completionHandler:(void (^)(NSArray *, NSError *))completionHandler{
-    NSURLComponents* urlComponents = [NSURLComponents componentsWithURL:self.templateURL resolvingAgainstBaseURL:NO];
-    NSURLQueryItem* queryItem = [[NSURLQueryItem alloc] initWithName:self.searchTermParameterName value:string];
-    NSMutableArray* mutableItems = urlComponents.queryItems ? [urlComponents.queryItems mutableCopy] : [[NSMutableArray alloc] init];
-    [mutableItems addObject:queryItem];
-    urlComponents.queryItems = mutableItems;
     
-    NSURLSessionDataTask *task = [self.session dataTaskWithURL:urlComponents.URL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    NSURL* url = [self urlForSearchTerm:string];
+    
+    NSURLSessionDataTask *task = [self.session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (!error) {
             NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
             if (httpResponse.statusCode >= 200 && httpResponse.statusCode < 300) {
@@ -63,6 +61,19 @@
         }
     }];
     [task resume];
+}
+
+- (NSURL*)urlForSearchTerm:(NSString*)term{
+    NSURLComponents* urlComponents = [NSURLComponents componentsWithURL:self.templateURL resolvingAgainstBaseURL:NO];
+    NSURLQueryItem* queryItem = [[NSURLQueryItem alloc] initWithName:self.searchTermParameterName value:term];
+    NSArray* items = urlComponents.queryItems ?: @[ ];
+    items = [items at_filter:^BOOL(NSURLQueryItem* queryItem) {
+        return ![queryItem.name isEqualToString:self.searchTermParameterName];
+    }];
+    NSMutableArray* mutableItems = [items mutableCopy];
+    [mutableItems addObject:queryItem];
+    urlComponents.queryItems = mutableItems;
+    return urlComponents.URL;
 }
 
 @end

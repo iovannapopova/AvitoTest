@@ -32,7 +32,6 @@
 @property (nonatomic, strong) NSArray* itunesResultsArray;
 @property (nonatomic, strong) NSArray* githubResultsArray;
 
-
 @property (nonatomic, strong) ATTransitioningDelegateObject* customTransitioningDelegate;
 
 @end
@@ -161,8 +160,13 @@ static CGFloat kSearchBarHeight = 60.0;
 #pragma mark - Search bar delegate
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    UIActivityIndicatorView* indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    indicatorView.center = self.view.center;
+    [self.view addSubview:indicatorView];
+    [indicatorView startAnimating];
     [self dismissKeyboard];
     [self.searchEngine searchForString:self.searchBar.text completionHandler:^(NSArray *itunesResultsArray, NSArray *githubResultsArray, NSError *resultsError) {
+        [indicatorView stopAnimating];
         if (!resultsError) {
             self.itunesResultsArray = itunesResultsArray;
             self.githubResultsArray = githubResultsArray;
@@ -195,11 +199,6 @@ static CGFloat kSearchBarHeight = 60.0;
     imageViewController.modalPresentationStyle = UIModalPresentationCustom;
 
     [self presentViewController:imageViewController animated:YES completion:nil];
-}
-
-#pragma mark - Delegate
-
--(void)setUserInteractionEnabled:(BOOL)enable{
 }
 
 #pragma mark - segmented control actions
